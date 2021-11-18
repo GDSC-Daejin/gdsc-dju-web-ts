@@ -1,0 +1,51 @@
+import React from 'react';
+import { ContainerInner, LayoutContainer, TopMargin } from '../../Layout';
+import { MainText, Title } from '../../components/common/Title/title';
+import {
+  VideoWrapper,
+  StyledVideo,
+  StyledMainBanner,
+  LeftColorLinesWrapper,
+  RightColorLinesWrapper,
+  RecruitingWrapper,
+  MainBannerText,
+  ButtonWrapper,
+  BannerTitleWrapper,
+  StyledButton,
+  MarginPage,
+} from './styled';
+import styled from 'styled-components';
+import Recruiting from '../../img/Recruiting';
+import ColorLines from '../../img/ColorLines';
+
+export const Home = () => {
+  return (
+    <>
+      <StyledMainBanner>
+        <LeftColorLinesWrapper>
+          <ColorLines />
+        </LeftColorLinesWrapper>
+        <RightColorLinesWrapper>
+          <ColorLines />
+        </RightColorLinesWrapper>
+      </StyledMainBanner>
+      <BannerTitleWrapper>
+        <RecruitingWrapper>
+          <Recruiting />
+          <MainBannerText>
+            GDSC Daejin Univ. 에서 새로운 식구들을 모집하고 있습니다.
+          </MainBannerText>
+          <ButtonWrapper>
+            <StyledButton>지원기간이 아닙니다.</StyledButton>
+          </ButtonWrapper>
+          <MainBannerText>11.29 ~ 12. 05</MainBannerText>
+        </RecruitingWrapper>
+      </BannerTitleWrapper>
+      <LayoutContainer>
+        <ContainerInner>
+          <MarginPage />
+        </ContainerInner>
+      </LayoutContainer>
+    </>
+  );
+};
