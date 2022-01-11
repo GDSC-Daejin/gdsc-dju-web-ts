@@ -1,61 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router';
+import React, { useEffect, useRef, useState } from 'react';
+import { Route, Routes } from 'react-router';
 import { Pages } from '../../pages';
-import Navigation from '../common/Navigation';
-import { authService, dbService } from '../../firebase/firebase';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import { STATUS_KEY, statusState } from '../../store/status';
-import { userDataState } from '../../store/user';
-import { postState } from '../../store/post';
+import { useRecoilState } from 'recoil';
+import Alert from '../common/Alert';
+import { alertState } from '../../store/alert';
+
 import { Footer } from '../common/Footer';
-import MoblieMenu from '../common/Navigation/MobileMenu';
+
+import { menuState } from '../../store/menu';
+import MobileMenu from '../common/navigation/MobileMenu';
+import Navigation from '../common/navigation/DeskNavigation';
 
 export const Main = () => {
-  // const [status, setStatus] = useRecoilState(statusState);
-  // const [post, setPost] = useRecoilState(postState);
-  // const [userInfomation, setUserInfomation] = useRecoilState(userDataState);
-  // const setUser = () => {
-  //   authService.onAuthStateChanged((user: any) => {
-  //     setStatus({ ...status, [STATUS_KEY.INIT]: true });
-  //
-  //     if (user) {
-  //       setStatus({ ...status, [STATUS_KEY.LOGGEDIN]: true });
-  //       setStatus({ ...userInfomation, ...user });
-  //
-  //       localStorage.setItem('user', JSON.stringify(user));
-  //     } else {
-  //       setStatus({ ...status, [STATUS_KEY.LOGGEDIN]: false });
-  //     }
-  //   });
-  // };
-  //
-  // const getPost = () => {
-  //   dbService.collection('posts').onSnapshot((snapshot) => {
-  //     const postArray = snapshot.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }));
-  //     setPost({ ...post, ...postArray });
-  //     // localStorage.setItem('posts', JSON.stringify(postArray));
-  //   });
-  // };
-  // const onLogOutClick = () => {
-  //   authService.signOut();
-  //   useResetRecoilState(userDataState);
-  // };
-  //
-  // useEffect(() => {
-  //   setUser();
-  //   getPost();
-  // }, []);
+  const [alert] = useRecoilState(alertState);
+  const [navHandler, setNavHandler] = useState<boolean>(true);
+  {
+    /*Onboarding page navigation 숨김 */
+  }
+  const hideNavigation = () => {
+    if (location.pathname.includes('/onboarding')) {
+      setNavHandler(false);
+    } else {
+      setNavHandler(true);
+    }
+  };
+  useEffect(() => {
+    hideNavigation();
+  }, []);
+
   return (
     <>
-      <Navigation />
-      <MoblieMenu />
-      <Switch>
-        <Route path={''} component={Pages} />
-      </Switch>
-      <Footer />
+      <MobileMenu />
+      {navHandler ? <Navigation /> : null}
+      {alert.alertHandle && <Alert />}
+      {/*<Alert />*/}
+      <Routes>
+        <Route path={'*'} element={<Pages />} />
+      </Routes>
+      {navHandler ? <Footer /> : null}
     </>
   );
 };

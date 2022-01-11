@@ -1,18 +1,13 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const CategoryWrapper = styled.div`
+export const CategoryWrapper = styled(motion.div)`
   display: flex;
   padding: 24px 0px;
   margin-right: 30px;
   cursor: pointer;
+  background: white;
   border-radius: 10px;
-  transition-property: all;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-  &:hover {
-    background: #f2f4f6;
-  }
   @media (max-width: ${(props) => props.theme.windowSize.tablet}px) {
     margin-right: 10px;
   }
@@ -24,12 +19,13 @@ export const TeamCategoryWrapper = styled.div`
   display: flex;
   padding: 24px 0px;
   margin-right: 30px;
+  justify-content: space-around;
   @media (max-width: 500px) {
     display: none;
   }
 `;
 export const CategoryInner = styled.div`
-  padding: 0 30px;
+  padding-left: 30px;
   font-size: 18px;
   display: flex;
   flex-direction: row;
@@ -41,7 +37,7 @@ export const SubCategory = styled.div`
   align-items: center;
   width: 300px;
   font-size: 13px;
-  color: rgb(139, 149, 161);
+  color: ${(props) => props.theme.color.silver};
   @media (max-width: ${(props) => props.theme.windowSize.desk}px) {
     width: 300px;
   }
@@ -56,9 +52,9 @@ export const TeamCategory = styled.div`
   display: flex;
   align-items: center;
   margin-left: 30px;
-  width: 420px;
+  width: 500px;
   font-size: 13px;
-  color: rgb(139, 149, 161);
+  color: ${(props) => props.theme.color.darkGray};
   @media (max-width: ${(props) => props.theme.windowSize.desk}px) {
     width: 380px;
   }
@@ -70,10 +66,10 @@ export const TeamSubCategory = styled.div`
   display: flex;
   -webkit-box-align: center;
   align-items: center;
-  margin-left: 40px;
-  width: 200px;
+  margin-left: 10px;
+  width: 300px;
   font-size: 13px;
-  color: rgb(139, 149, 161);
+  color: ${(props) => props.theme.color.darkGray};
   @media (max-width: ${(props) => props.theme.windowSize.desk}px) {
     width: 200px;
   }
@@ -86,7 +82,6 @@ export const Category = styled.div`
   font-weight: bold;
   align-items: center;
   width: 500px;
-  padding-right: 30px;
   font-size: 18px;
   @media (max-width: ${(props) => props.theme.windowSize.desk}px) {
     width: 500px;
@@ -95,11 +90,10 @@ export const Category = styled.div`
     width: 300px;
   }
   @media (max-width: ${(props) => props.theme.windowSize.mobile}px) {
-    width: 300px;
+    width: 200px;
   }
   @media (max-width: 320px) {
     width: 200px;
-    font-size: 15px;
     padding: 0;
   }
 `;
@@ -110,10 +104,9 @@ export const CategoryList = styled.div`
   padding-left: 30px;
 `;
 export const MobileCategoryWrapper = styled.div`
-  width: 100%;
   display: none;
   padding: 24px 0px;
-  margin-right: 30px;
+
   cursor: pointer;
   border-radius: 10px;
   transition-property: all;
@@ -121,17 +114,23 @@ export const MobileCategoryWrapper = styled.div`
   transition-timing-function: ease;
   transition-delay: 0s;
   &:hover {
-    background: #f2f4f6;
+    background: ${(props) => props.theme.color.whiteSmoke};
   }
   @media (max-width: 500px) {
     display: flex;
   }
 `;
 export const MobileCategoryInner = styled.div`
-  padding: 0 30px;
   font-size: 18px;
   display: flex;
   flex-direction: column;
-
   min-width: 320px;
+  @media (max-width: 320px) {
+    padding-left: 10px;
+    min-width: 150px;
+  }
+  @media (max-width: 500px) {
+    display: flex;
+    min-width: 150px;
+  }
 `;

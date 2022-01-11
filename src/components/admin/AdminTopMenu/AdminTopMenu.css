@@ -1,0 +1,15 @@
+.underline {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 0;
+    background: #42a5f5;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.selected{
+    color: black !important;
+
+}

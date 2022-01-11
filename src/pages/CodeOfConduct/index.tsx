@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   BannerWrapper,
   ContainerInner,
@@ -7,22 +6,20 @@ import {
   List,
   Tage,
   TopMargin,
-  BannerImage,
-} from '../../Layout';
+} from '../../styles/layouts';
 import { MainText, SubTitle, Title } from '../../components/common/Title/title';
-import RedBanner from '../../img/RedBanner.png';
-import GreenBanner from '../../img/GreenBanner.png';
-
+import { Banner } from '../../img/Banner/Banner';
+import RedBanner from '../../img/Banner/RedBanner.png';
 export const CodeOfConduct = () => {
   return (
     <>
       <BannerWrapper>
-        <BannerImage src={RedBanner} />
+        <Banner src={RedBanner} />
       </BannerWrapper>
       <LayoutContainer>
         <ContainerInner>
           <TopMargin />
-          <Title>Code of Conduct(Google)</Title>
+          <Title>Code of Conduct (Google)</Title>
 
           <TopMargin />
           <SubTitle>사람을 존중해주세요.</SubTitle>
@@ -81,10 +78,11 @@ export const CodeOfConduct = () => {
             </List>
           </MainText>
           <TopMargin />
-          <Title>Code of Conduct(GDSC Daejin)</Title>
+          <Title>Code of Conduct (GDSC-Daejin)</Title>
           <TopMargin />
           <SubTitle>
             <List>
+              <Tage />
               수평적 문화를 위해 영어 닉네임을 사용합니다.
               <br />
               본명 사용은 지양해주세요.

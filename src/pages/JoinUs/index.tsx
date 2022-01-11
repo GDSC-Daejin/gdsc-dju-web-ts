@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { ContainerInner, LayoutContainer, TopMargin } from '../../Layout';
+import {
+  ContainerInner,
+  LayoutContainer,
+  TopMargin,
+} from '../../styles/layouts';
 import { MainText, Title } from '../../components/common/Title/title';
-import { BannerImage, BannerWrapper } from '../../Layout/index';
+import { BannerImage, BannerWrapper } from '../../styles/layouts';
 
 import {
   Category,
@@ -14,17 +18,19 @@ import {
   TeamCategoryWrapper,
   TeamSubCategory,
 } from './styled';
-import { TeamInfomation } from '../../hooks/teamInfomation';
-import { useHistory } from 'react-router';
-import BlueBanner from '../../img/BlueBanner.png';
+import { TeamList } from '../../api/pageData/teamList';
+import { useNavigate } from 'react-router';
+import { Banner } from '../../img/Banner/Banner';
 
+import BlueBanner from '../../img/Banner/BlueBanner.png';
+import { categoryAnimate } from '../../components/common/Variants/Variants';
 export const JoinUs = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <>
       <BannerWrapper>
-        <BannerImage src={BlueBanner} />
+        <Banner src={BlueBanner} />
       </BannerWrapper>
       <LayoutContainer>
         <ContainerInner>
@@ -42,11 +48,15 @@ export const JoinUs = () => {
             <TeamSubCategory>Skill</TeamSubCategory>
             <TeamSubCategory>Stack</TeamSubCategory>
           </TeamCategoryWrapper>
-          {TeamInfomation.map((data, key) => (
+          {/*PC 환경 팀 리스트*/}
+          {TeamList.map((data, key) => (
             <CategoryWrapper
               key={key}
+              initial={'unHover'}
+              whileHover={'hovered'}
+              variants={categoryAnimate}
               onClick={() => {
-                history.push('/joinus/' + data.id);
+                navigate('/joinus/' + data.id);
               }}
             >
               <CategoryInner>
@@ -56,11 +66,12 @@ export const JoinUs = () => {
               </CategoryInner>
             </CategoryWrapper>
           ))}
-          {TeamInfomation.map((data, key) => (
+          {/*모바일 환경 팀 리스트*/}
+          {TeamList.map((data, key) => (
             <MobileCategoryWrapper
               key={key}
               onClick={() => {
-                history.push('/joinus/' + data.id);
+                navigate('/joinus/' + data.id);
               }}
             >
               <MobileCategoryInner>
@@ -69,9 +80,8 @@ export const JoinUs = () => {
               </MobileCategoryInner>
             </MobileCategoryWrapper>
           ))}
+          <TopMargin />
         </ContainerInner>
-
-        <TopMargin />
       </LayoutContainer>
     </>
   );
