@@ -4,12 +4,15 @@ import {
   CardList,
   ContainerInner,
   LayoutContainer,
-  NavigationBlock,
   TopMargin,
 } from '../../styles/layouts';
 import { MemberCard } from '../../components/common/card/MemberCard/';
 import { MemberCardWrapper } from './styled';
-import { MainText, SubTitle, Title } from '../../components/common/Title/title';
+import {
+  MainText,
+  SubCategory,
+  Title,
+} from '../../components/common/Title/title';
 import {
   listAnimate,
   memberCardAnimate,
@@ -30,7 +33,7 @@ const Introduce = () => {
   return (
     <>
       {modalHandler.memberCard && <MemberCardModal id={selectedId} />}
-      <NavigationBlock />
+
       <BannerWrapper>
         <Banner src={YellowBanner} />
       </BannerWrapper>
@@ -40,7 +43,7 @@ const Introduce = () => {
 
           <Title>About us</Title>
           <TopMargin />
-          <SubTitle>Google Developer Student Club 소개</SubTitle>
+          <SubCategory>Google Developer Student Club 소개</SubCategory>
           {introduceText.split('\n').map((line, id) => {
             return (
               <MainText key={id}>
@@ -51,7 +54,7 @@ const Introduce = () => {
           })}
 
           <TopMargin />
-          <SubTitle>합류하시면 함께할 활동입니다</SubTitle>
+          <SubCategory>합류하시면 함께할 활동입니다</SubCategory>
           <MainText>
             <BulletList text={workWhenCome} />
           </MainText>

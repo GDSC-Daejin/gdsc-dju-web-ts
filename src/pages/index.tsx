@@ -8,11 +8,12 @@ import API from '../api';
 import { hideNavigation } from '../store/hooks/hideNavigation';
 import MobileMenu from '../components/common/navigation/MobileMenu';
 import ScrollTop from '../components/common/ScrollTop';
+import GoogleSpinner from '../components/Lottie/GoogleSpinner';
+import { loaderState } from '../store/loader';
 
 const Home = lazy(() => import('./Home'));
 const Introduce = lazy(() => import('./Introduce'));
-const JoinUs = lazy(() => import('./JoinUs'));
-const Recruitment = lazy(() => import('./Recruitment'));
+const Recruit = lazy(() => import('./Recruit'));
 const CodeOfConduct = lazy(() => import('./CodeOfConduct'));
 const Faq = lazy(() => import('./Faq'));
 const FaqDetail = lazy(() => import('./Faq/FaqDetail'));
@@ -26,12 +27,12 @@ const Pages = () => {
       <Routes>
         <Route path={'/*'} element={<Home />} />
         <Route path={'/introduce'} element={<Introduce />} />
-        <Route path={'/join/*'} element={<JoinUs />} />
-        <Route path={'/join/:id'} element={<Recruitment />} />
+        <Route path={'/recruit/*'} element={<Recruit />} />
         <Route path={'/conduct'} element={<CodeOfConduct />} />
         <Route path={'/faq/*'} element={<Faq />} />
         <Route path={'/faq/:id'} element={<FaqDetail />} />
       </Routes>
+
       <Footer />
     </>
   );

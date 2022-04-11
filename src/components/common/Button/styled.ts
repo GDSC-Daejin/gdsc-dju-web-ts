@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledButton = styled.button`
-  background: ${(props) => props.theme.color.tossBlue};
+export const StyledButton = styled.button<{ disable?: boolean }>`
   color: white;
   width: 100%;
   padding: 12px 0px;
@@ -10,9 +9,48 @@ export const StyledButton = styled.button`
   border-color: ${(props) => props.theme.color.tossBlue};
   border-style: inherit;
   margin-bottom: 10px;
-  font-size: 1.6rem;
-  &:hover {
-    background: ${(props) => props.theme.color.tossBlueActive};
-    cursor: pointer;
-  }
+  background: ${(props) => props.theme.color.tossBlue};
+  font-size: ${(props) => props.theme.fontSize.body2};
+  cursor: pointer;
+  ${(props) =>
+    props.disable &&
+    css`
+      cursor: not-allowed;
+      background: ${(props) => props.theme.color.tossBlue200};
+    `}
+`;
+
+export const StyledButtonX = styled.button<{
+  color?: string;
+  background?: string;
+  size?: string;
+  disable?: boolean;
+  border?: string;
+}>`
+  display: flex;
+  align-items: center;
+  border: 1px solid ${(props) => props.theme.color.grey300};
+  ${(props) =>
+    props.border &&
+    css`
+      border: 1px solid ${props.border};
+    `}
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: ${(props) => props.theme.fontSize.body2};
+  color: ${(props) => props.color};
+  ${(props) =>
+    props.disable &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.5;
+    `}
+  ${(props) =>
+    props.size === 'large' &&
+    css`
+      padding: 8px 86px;
+    `}
+  box-shadow: 0 2px 12px rgba(25, 31, 40, 0.08);
+  border-radius: 10px;
+  background: ${(props) => props.background};
 `;

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export const NavDesign = styled.nav`
-  position: fixed;
+  position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 990;
   height: 60px;
   width: 100%;
 `;
@@ -70,7 +70,7 @@ export const ShortNavigation = styled(motion.nav)`
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 2;
   @media (min-width: 560px) {
     display: none;
   }

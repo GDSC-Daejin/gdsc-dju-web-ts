@@ -3,10 +3,13 @@ import {
   BannerWrapper,
   ContainerInner,
   LayoutContainer,
-  NavigationBlock,
   TopMargin,
 } from '../../styles/layouts';
-import { MainText, SubTitle, Title } from '../../components/common/Title/title';
+import {
+  MainText,
+  SubCategory,
+  Title,
+} from '../../components/common/Title/title';
 import { Banner } from '../../img/Banner/Banner';
 import RedBanner from '../../img/Banner/RedBanner.png';
 import { codeOfConduct } from '../../api/pageData/codeOfConduct';
@@ -15,7 +18,6 @@ import BulletList from '../../components/common/BulletList';
 const CodeOfConduct = () => {
   return (
     <>
-      <NavigationBlock />
       <BannerWrapper>
         <Banner src={RedBanner} />
       </BannerWrapper>
@@ -26,7 +28,7 @@ const CodeOfConduct = () => {
           <TopMargin />
           {codeOfConduct.map((data, id) => (
             <>
-              <SubTitle>{data.title}</SubTitle>
+              <SubCategory>{data.title}</SubCategory>
               <MainText>
                 <BulletList text={data.content} />
               </MainText>
